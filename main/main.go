@@ -23,8 +23,8 @@ func main() {
 	}
 
 	if isTooLarge {
-		//fixCSVSize.Split(rows[0], rows)
+		fixCsvSize.Split("resizedCsv", rows[0], rows)
 	}
 
-	fmt.Println(rows)
+	fmt.Println("ok")
 }

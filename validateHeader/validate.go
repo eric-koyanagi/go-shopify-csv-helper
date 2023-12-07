@@ -3,6 +3,7 @@ package validateHeader
 import (
 	"errors"
 	"fmt"
+	"strings"
 )
 
 var validHeaders = []string{
@@ -62,7 +63,7 @@ var validHeaders = []string{
 // each header must exist in the validHeaders defined above
 func isValidHeader(val string) bool {
 	for _, validHeader := range validHeaders {
-		if val == validHeader {
+		if strings.ToLower(val) == strings.ToLower(validHeader) {
 			return true
 		}
 	}
