@@ -14,4 +14,4 @@ This is a go app, so you'll need to install go. This was done as a coding projec
 Note that this only outputs new files if the input file is > 15 MB. Also, it checks the input file to ensure that each column matches the Shopify definition. 
 
 # Creating dummy files 
-(IN PROGRESS)
+See https://github.com/eric-koyanagi/shopify-csv-maker
