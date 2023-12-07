@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+
+	"csvHelper/validateHeader"
 )
 
 var ErrLoadCSV = errors.New("failed to load CSV")
@@ -22,6 +24,12 @@ func GetCSV(path string) ([][]string, error) {
 	data, err := loadCSV(file)
 	if err != nil {
 		return nil, err
+	}
+
+	// Check that the header is valid
+	isValid, err := validateHeader.Validate(data[0])
+	if !isValid {
+		return nil, fmt.Errorf("column header is not valid: %w", err)
 	}
 
 	return data, err

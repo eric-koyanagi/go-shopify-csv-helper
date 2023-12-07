@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	rows, err := loadCsv.GetCSV("data.csv")
+	rows, err := loadCsv.GetCSV("../example.csv")
 	if err != nil {
 		fmt.Println(err)
 	}
