@@ -18,7 +18,7 @@ func Split(fileName string, header []string, rows [][]string) error {
 	fileNumber := 1
 
 	for processedRows < len(rows) {
-		fileName := fmt.Sprintf("%s_%d.csv", fileName, fileNumber)
+		fileName := fmt.Sprintf("../%s_%d.csv", fileName, fileNumber)
 		file, err := os.Create(fileName)
 		if err != nil {
 			return err
