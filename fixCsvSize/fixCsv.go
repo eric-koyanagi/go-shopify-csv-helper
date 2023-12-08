@@ -7,7 +7,7 @@ import (
 )
 
 const MAX_SIZE = 15 * 1024 * 1024
-const MAX_ROWS_PER_FILE = 10000
+const MAX_ROWS_PER_FILE = 30000
 
 func Check(file string) (bool, error) {
 	return isValidSize(file)
@@ -27,9 +27,11 @@ func Split(fileName string, header []string, rows [][]string) error {
 
 		// Create a CSV writer and write the header
 		writer := csv.NewWriter(file)
-		err = writer.Write(header)
-		if err != nil {
-			return err
+		if processedRows > 0 {
+			err = writer.Write(header)
+			if err != nil {
+				return err
+			}
 		}
 
 		// Write up to MAX_ROWS_PER_FILE into the CSV
@@ -65,5 +67,6 @@ func isValidSize(path string) (bool, error) {
 	}
 
 	// Check if size is less than 15 MB (15 * 1024 * 1024)
+	fmt.Println("File is this size: ", fileInfo.Size())
 	return fileInfo.Size() < MAX_SIZE, nil
 }
